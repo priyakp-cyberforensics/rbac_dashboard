@@ -29,7 +29,7 @@ A **Role-Based Access Control (RBAC) Security Dashboard** built from scratch usi
 
 ---
 
-**##⚡ Installation & Setup**
+##⚡ Installation & Setup
 
 1. Clone the repository
    `bash
