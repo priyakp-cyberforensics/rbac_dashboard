@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row g-4">
+  <div class="col-lg-6">
+    <div class="card neon-card">
+      <div class="card-header"><i class="fa-solid fa-user-plus me-2"></i>Create User</div>
+      <div class="card-body">
+        <form method="post" class="row g-3">
+          <div class="col-6">
+            <label class="form-label">Username</label>
+            <input name="username" class="form-control" placeholder="e.g., devika" />
+          </div>
+          <div class="col-6">
+            <label class="form-label">Role</label>
+            <select name="role_id" class="form-select">
+              {% for r in roles %}<option value="{{ r.id }}">{{ r.name }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-neon" type="submit"><i class="fa-solid fa-plus me-1"></i>Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card neon-card">
+      <div class="card-header"><i class="fa-solid fa-users me-2"></i>Users</div>
+      <div class="card-body">
+        <table class="table table-dark table-hover align-middle">
+          <thead><tr><th>User</th><th>Role</th><th class="text-end">Actions</th></tr></thead>
+          <tbody>
+            {% for u in users %}
+            <tr>
+              <td>{{ u.username }}</td>
+              <td><span class="badge bg-secondary"><i class="fa-solid fa-user-shield me-1"></i>{{ u.role.name }}</span></td>
+              <td class="text-end">
+                <form method="post" action="{{ url_for('delete_user', user_id=u.id) }}">
+                  <button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

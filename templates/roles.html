@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row g-4">
+  <div class="col-lg-4">
+    <div class="card neon-card">
+      <div class="card-header"><i class="fa-solid fa-user-shield me-2"></i>Create Role</div>
+      <div class="card-body">
+        <form method="post">
+          <label class="form-label">Role name</label>
+          <input name="name" class="form-control" placeholder="e.g., Support" />
+          <button class="btn btn-neon mt-3" type="submit"><i class="fa-solid fa-plus me-1"></i>Add</button>
+        </form>
+        <hr class="my-4">
+        <form method="post" action="{{ url_for('create_permission') }}">
+          <label class="form-label">New permission</label>
+          <div class="row g-2">
+            <div class="col-6"><input name="resource" class="form-control" placeholder="resource e.g., server"/></div>
+            <div class="col-6"><input name="action" class="form-control" placeholder="action e.g., read"/></div>
+          </div>
+          <button class="btn btn-outline-neon mt-3" type="submit"><i class="fa-solid fa-plus"></i> Permission</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <div class="card neon-card">
+      <div class="card-header"><i class="fa-solid fa-table me-2"></i>Permission Matrix</div>
+      <div class="card-body">
+        {% for r in roles %}
+          <form method="post" action="{{ url_for('assign_permission', role_id=r.id) }}" class="mb-4">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="mb-2"><span class="badge bg-info"><i class="fa-solid fa-shield me-1"></i>{{ r.name }}</span></h5>
+              <button class="btn btn-neon btn-sm" type="submit"><i class="fa-solid fa-floppy-disk me-1"></i>Save</button>
+            </div>
+            <div class="matrix">
+              {% for p in perms %}
+                <label class="matrix-item">
+                  <input type="checkbox" name="permissions" value="{{ p.id }}"
+                    {% for rp in r.permissions %}{% if rp.permission.id == p.id %}checked{% endif %}{% endfor %}>
+                  <span class="matrix-tag">{{ p.resource }} • {{ p.action }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </form>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

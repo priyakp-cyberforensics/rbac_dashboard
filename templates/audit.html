@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card neon-card">
+  <div class="card-header"><i class="fa-solid fa-clipboard-list me-2"></i>Audit Timeline</div>
+  <div class="card-body">
+    <div class="timeline">
+      {% for log in logs %}
+        <div class="timeline-item {{ 'allowed' if log.decision == 'ALLOWED' else 'denied' }}">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="d-flex justify-content-between">
+              <strong><i class="fa-solid fa-user me-1"></i>{{ log.user }}</strong>
+              <small>{{ log.timestamp }}</small>
+            </div>
+            <div><i class="fa-solid fa-database me-1"></i>{{ log.resource }} • <span class="badge bg-secondary">{{ log.action }}</span></div>
+            <div class="mt-1">
+              {% if log.decision == 'ALLOWED' %}
+                <span class="badge bg-success"><i class="fa-solid fa-check me-1"></i>Allowed</span>
+              {% else %}
+                <span class="badge bg-danger"><i class="fa-solid fa-xmark me-1"></i>Denied</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

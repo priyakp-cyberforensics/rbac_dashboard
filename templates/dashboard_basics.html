@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div class="card neon-card">
+      <div class="card-header"><i class="fa-solid fa-gauge-high me-2"></i>Overview</div>
+      <div class="card-body">
+        <div class="row text-center">
+          <div class="col-6">
+            <div class="metric allowed"><i class="fa-solid fa-check-circle"></i>
+              <div>Allowed</div>
+              <h2>{{ allowed }}</h2>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric denied"><i class="fa-solid fa-xmark-circle"></i>
+              <div>Denied</div>
+              <h2>{{ denied }}</h2>
+            </div>
+          </div>
+        </div>
+        <canvas id="adChart" height="120"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card neon-card">
+      <div class="card-header"><i class="fa-solid fa-vial me-2"></i>Simulate Access</div>
+      <div class="card-body">
+        <form method="post" action="{{ url_for('simulate') }}" class="row g-3">
+          <div class="col-12">
+            <label class="form-label">User</label>
+            <select name="user_id" class="form-select">
+              {% for u in users %}<option value="{{ u.id }}">{{ u.username }} ({{ u.role.name }})</option>{% endfor %}
+            </select>
+          </div>
+          <div class="col-6">
+            <label class="form-label">Resource</label>
+            <select name="resource" class="form-select">
+              {% for p in perms|unique(attribute='resource') %}
+                <option value="{{ p.resource }}">{{ p.resource }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-6">
+            <label class="form-label">Action</label>
+            <select name="action" class="form-select">
+              {% for p in perms %}
+                <option value="{{ p.action }}">{{ p.action }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-neon w-100" type="submit"><i class="fa-solid fa-lock-open me-1"></i>Try</button>
+          </div>
+        </form>
+        <div class="mt-3 hint">Tip: Switch users to see RBAC in action.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener("DOMContentLoaded", async () => {
+  const res = await fetch("{{ url_for('stats_json') }}");
+  const data = await res.json();
+  renderAllowedDenied("adChart", data.allowed, data.denied);
+});
+</script>
+{% endblock %}
+
