@@ -1,0 +1,12 @@
+Flask==3.0.2
+Flask-SQLAlchemy==3.1.1
+SQLAlchemy==2.0.29
+Werkzeug==3.0.1
+Jinja2==3.1.3
+itsdangerous==2.1.2
+click==8.1.7
+
+# Optional extras for development and visualization
+python-dotenv==1.0.1   # Environment variable management
+Flask-WTF==1.2.1       # Form handling
+WTForms==3.1.2         # Form validation
