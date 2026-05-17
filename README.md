@@ -29,7 +29,7 @@ A **Role-Based Access Control (RBAC) Security Dashboard** built from scratch usi
 
 ---
 
-##⚡ Installation & Setup
+**⚡ Installation & Setup**
 
 1. Clone the repository
    `bash
@@ -55,7 +55,7 @@ A **Role-Based Access Control (RBAC) Security Dashboard** built from scratch usi
 
 ---
 
-**##🎨 Dashboard Highlights**
+**🎨 Dashboard Highlights**
 
 - ✅ Permission Matrix for role design  
 - 📊 Audit Timeline with glowing logs  
@@ -64,7 +64,7 @@ A **Role-Based Access Control (RBAC) Security Dashboard** built from scratch usi
 
 ---
 
-**##📖 Use Cases**
+**📖 Use Cases**
 
 - Academic Projects – Teaching cybersecurity through interactive design.  
 - Enterprise Simulation – Mimicking professional-grade RBAC systems.  
@@ -72,6 +72,6 @@ A **Role-Based Access Control (RBAC) Security Dashboard** built from scratch usi
 
 ---
 
-**##📜 License**
+**📜 License**
 
 This project is licensed under the MIT License – free to use, modify, and distribute with attribution.
