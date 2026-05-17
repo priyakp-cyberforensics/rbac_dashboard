@@ -1,4 +1,3 @@
-# rbac_dashboard
 # RBAC Security Dashboard
 
 A **Role-Based Access Control (RBAC) Security Dashboard** built from scratch using **Python, Flask, SQLAlchemy, Bootstrap, and Chart.js**. This project blends **cybersecurity principles** with **UI/UX design thinking**, offering a full-stack academic showcase that simulates enterprise-grade access control systems.
@@ -27,19 +26,10 @@ A **Role-Based Access Control (RBAC) Security Dashboard** built from scratch usi
 
 ---
 
-## 📂 Project Structure
-rbac-dashboard/
-│── app.py              # Main Flask application
-│── models.py           # SQLAlchemy models (Users, Roles, Permissions)
-│── templates/          # HTML templates (Bootstrap + Jinja2)
-│── static/             # CSS, JS, Chart.js assets
-│── database.db         # SQLite database
-│── README.md           # Documentation
-`
 
 ---
 
-⚡ Installation & Setup
+**##⚡ Installation & Setup**
 
 1. Clone the repository
    `bash
@@ -65,7 +55,7 @@ rbac-dashboard/
 
 ---
 
-🎨 Dashboard Highlights
+**##🎨 Dashboard Highlights**
 
 - ✅ Permission Matrix for role design  
 - 📊 Audit Timeline with glowing logs  
@@ -74,7 +64,7 @@ rbac-dashboard/
 
 ---
 
-📖 Use Cases
+**##📖 Use Cases**
 
 - Academic Projects – Teaching cybersecurity through interactive design.  
 - Enterprise Simulation – Mimicking professional-grade RBAC systems.  
@@ -82,6 +72,6 @@ rbac-dashboard/
 
 ---
 
-📜 License
+**##📜 License**
 
 This project is licensed under the MIT License – free to use, modify, and distribute with attribution.
